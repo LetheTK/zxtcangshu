@@ -1,0 +1,15 @@
+#!name=知轩藏书签到
+#!desc=知轩藏书(zxcsol.com)自动签到
+#!author=LetheTK
+#!homepage=https://github.com/LetheTK/zx
+#!icon=https://zxcsol.com/wp-content/themes/zibll/img/favicon.ico
+
+[MITM]
+hostname = %APPEND% zxcsol.com
+
+[Script]
+知轩藏书Cookie = type=http-request,pattern=^https:\/\/zxcsol\.com\/(wp-admin\/admin-ajax\.php|update|user),script-path=https://raw.githubusercontent.com/LetheTK/zx/refs/heads/main/zxcs_cookie.js,requires-body=0
+知轩藏书签到 = type=cron,cronexp=0 9 * * *,timeout=60,script-path=https://raw.githubusercontent.com/LetheTK/zx/refs/heads/main/zxcs_sign.js,wake-system=1
+
+[Panel]
+知轩藏书签到 = script-name=知轩藏书签到,title=知轩藏书签到,content=请刷新,update-interval=600 
